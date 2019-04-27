@@ -13,6 +13,10 @@
     <Title>FakeApi</Title>
     <Description>Provides the ability to send HttpWebrequest and get HttpWebResponses without a server You can mock all available properties from HttpWebResponse .Net object with a json configuration file. This tool is not intrusive. 
 You simply switch between your own implementation of IHttpRequester and the implementation contained in this package</Description>
+    <PackageId>FakeApi</PackageId>
+    <ReleaseVersion>1.0.0.0</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
