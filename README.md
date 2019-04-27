@@ -170,7 +170,7 @@ var serviceCollection = new ServiceCollection();
             }
 ```
 
-#### List of available default values
+#### List of available default properties
 
 - int DefaultDelay (delay before FakeApi get HttpWebResponse)
 - int DefaultHttpCode
@@ -186,7 +186,7 @@ var serviceCollection = new ServiceCollection();
 - array DefaultExceptionType
 - array DefaultCookies
 
-#### List of available values for each api configuration
+#### List of available properties for each api configuration (to override default properties)
 
 - int Delay (delay before FakeApi get HttpWebResponse)
 - int HttpCode
