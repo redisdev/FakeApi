@@ -202,9 +202,8 @@ using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
 - array ExceptionType
 - array Cookies
 
-#### Full example
+#### Example
 
-You can find a full project example under Example solution folder.
-
+You can find a full project example under Example solution folder
 
 
