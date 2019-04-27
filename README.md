@@ -43,4 +43,64 @@ Now, you can define your web api configuration:
     }
 ```
 For each web api you can set many responses. The first response flagged as active (active = 1) will be used by FakeApi.
+Note that you can use template segment in your url configuration (/{idUser}).
+You can also override all default values defined at the root path in each apis configuration.
+
+- #### How to return data from file?
+
+Simply set the "file" property into your api configuration:
+
+```json
+{
+      "url": "http://localhost:8080/api/get-file",
+      "responses": [
+        {
+          "active": 1,
+          "httpCode": 200,
+          "file": "DownloadFile.txt"
+        }
+      ]
+    }
+```
+- #### How to throw a WebException?
+
+Maybe you will have to test how your code reacts when a web exception are throwing. To do that, you need to set the "webExceptionMessage" property:
+
+```json
+{
+      "url": "http://localhost:8080/api/ad/{adId}",
+      "responses": [
+        {
+          "active": 1,
+          "httpCode": 400,
+          "webExceptionMessage": "Invalid ad id"
+        }
+      ]
+}
+````
+
+- #### How to throw a custom exception?
+
+You can force FakeApi to throw your exceptions:
+
+```json
+{
+      "url": "http://localhost:8080/api/ad/{adId}/custom-error",
+      "responses": [
+        {
+          "active": 1,
+          "httpCode": 500,
+          "customApiException": 
+          {
+            "fullTypeName": "App.CustomWebException, App",
+            "constructorArgs": [
+              "custom exception message"
+            ]
+          }
+        }
+      ]
+}
+```
+
+
 
