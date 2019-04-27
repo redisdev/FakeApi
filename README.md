@@ -81,7 +81,7 @@ Maybe you will have to test how your code reacts when a web exception are throwi
 
 - #### How to throw a custom exception?
 
-You can force FakeApi to throw your own exceptions:
+You can force FakeApi to throw your exceptions:
 
 ```json
 {
@@ -102,5 +102,35 @@ You can force FakeApi to throw your own exceptions:
 }
 ```
 
+- #### Create a HttpWebRequest and use FakeApi
+
+Finally you have to create your web request and use the FakeHttpRequester provided by FakeApi to get the corresponding HttpWebResponse:
+
+```csharp
+
+var serviceCollection = new ServiceCollection();
+
+#if DEBUG
+            serviceCollection.AddScoped<IHttpRequester, FakeHttpRequester>(provider =>
+            {
+                return new FakeHttpRequester("api.cfg.json");
+            });
+#endif
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var httpRequester = serviceProvider.GetService<IHttpRequester>();
+
+            //Get user request
+            var getUserRequest = (HttpWebRequest)WebRequest.Create("http://localhost:8080/api/users/56");
+            var getUserResponse = httpRequester.GetResponse(getUserRequest);
+
+            using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
+            {
+                var data = stream.ReadToEnd();
+                var user = JsonConvert.DeserializeObject<User>(data);
+                Console.WriteLine($"json data from {getUserRequest.RequestUri}");
+                Console.WriteLine($"Firstname : {user.Firstname} | Lastname : {user.Lastname} | Id : {user.Id}");
+            }
+```
 
 
