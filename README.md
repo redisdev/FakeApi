@@ -111,26 +111,26 @@ Finally you have to create your web request and use the FakeHttpRequester provid
 var serviceCollection = new ServiceCollection();
 
 #if DEBUG
-            serviceCollection.AddScoped<IHttpRequester, FakeHttpRequester>(provider =>
-            {
-                return new FakeHttpRequester("api.cfg.json");
-            });
+serviceCollection.AddScoped<IHttpRequester, FakeHttpRequester>(provider =>
+{
+    return new FakeHttpRequester("api.cfg.json");
+});
 #endif
 
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            var httpRequester = serviceProvider.GetService<IHttpRequester>();
+var serviceProvider = serviceCollection.BuildServiceProvider();
+var httpRequester = serviceProvider.GetService<IHttpRequester>();
 
-            //Get user request
-            var getUserRequest = (HttpWebRequest)WebRequest.Create("http://localhost:8080/api/users/56");
-            var getUserResponse = httpRequester.GetResponse(getUserRequest);
+//Get user request
+var getUserRequest = (HttpWebRequest)WebRequest.Create("http://localhost:8080/api/users/56");
+var getUserResponse = httpRequester.GetResponse(getUserRequest);
 
-            using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
-            {
-                var data = stream.ReadToEnd();
-                var user = JsonConvert.DeserializeObject<User>(data);
-                Console.WriteLine($"json data from {getUserRequest.RequestUri}");
-                Console.WriteLine($"Firstname : {user.Firstname} | Lastname : {user.Lastname} | Id : {user.Id}");
-            }
+using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
+{
+    var data = stream.ReadToEnd();
+    var user = JsonConvert.DeserializeObject<User>(data);
+    Console.WriteLine($"json data from {getUserRequest.RequestUri}");
+    Console.WriteLine($"Firstname : {user.Firstname} | Lastname : {user.Lastname} | Id : {user.Id}");
+}
 ```
 
 
