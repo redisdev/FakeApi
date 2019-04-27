@@ -62,6 +62,43 @@ Simply set the "file" property into your api configuration:
       ]
     }
 ```
+
+- #### How to add cookie and header?
+
+You can add cookies and headers into HttpWebResponse:
+
+```json
+{
+      "url": "http://localhost:8080/api/orders/{orderId}/addresses/{addressId}}",
+      "responses": [
+        {
+          "active": 1,
+          "delay": 135,
+          "httpCode": 200,
+          "cookies": [
+            {
+              "name": "cookie1",
+              "value": "valCookie1"
+            },
+            {
+              "name": "cookie2",
+              "value": "valCookie2"
+            }
+          ],
+          "headers": [
+            {
+              "name": "header1",
+              "value": "valHeader1"
+            },
+            {
+              "name": "header2",
+              "value": "valHeader2  "
+            }
+          ],
+          "response": "{ 'orderId': 345, 'streetAddress':'2762 Highland Drive', 'city': 'Nina' }"
+        }
+```
+
 - #### How to throw a WebException?
 
 Maybe you will have to test how your code reacts when a web exception are throwing. To do that, you need to set the "webExceptionMessage" property:
@@ -111,26 +148,61 @@ Finally you have to create your web request and use the FakeHttpRequester provid
 var serviceCollection = new ServiceCollection();
 
 #if DEBUG
-serviceCollection.AddScoped<IHttpRequester, FakeHttpRequester>(provider =>
-{
-    return new FakeHttpRequester("api.cfg.json");
-});
+            serviceCollection.AddScoped<IHttpRequester, FakeHttpRequester>(provider =>
+            {
+                return new FakeHttpRequester("api.cfg.json");
+            });
 #endif
 
-var serviceProvider = serviceCollection.BuildServiceProvider();
-var httpRequester = serviceProvider.GetService<IHttpRequester>();
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var httpRequester = serviceProvider.GetService<IHttpRequester>();
 
-//Get user request
-var getUserRequest = (HttpWebRequest)WebRequest.Create("http://localhost:8080/api/users/56");
-var getUserResponse = httpRequester.GetResponse(getUserRequest);
+            //Get user request
+            var getUserRequest = (HttpWebRequest)WebRequest.Create("http://localhost:8080/api/users/56");
+            var getUserResponse = httpRequester.GetResponse(getUserRequest);
 
-using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
-{
-    var data = stream.ReadToEnd();
-    var user = JsonConvert.DeserializeObject<User>(data);
-    Console.WriteLine($"json data from {getUserRequest.RequestUri}");
-    Console.WriteLine($"Firstname : {user.Firstname} | Lastname : {user.Lastname} | Id : {user.Id}");
-}
+            using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
+            {
+                var data = stream.ReadToEnd();
+                var user = JsonConvert.DeserializeObject<User>(data);
+                Console.WriteLine($"json data from {getUserRequest.RequestUri}");
+                Console.WriteLine($"Firstname : {user.Firstname} | Lastname : {user.Lastname} | Id : {user.Id}");
+            }
 ```
+
+#### List of available default values
+
+- int DefaultDelay (delay before FakeApi get HttpWebResponse)
+- int DefaultHttpCode
+- long DefaultContentLength
+- string DefaultContentType
+- bool DefaultIsFromCache
+- bool DefaultIsMutuallyAuthenticated
+- string DefaultMethod
+- string DefaultResponseUri
+- string DefaultResponse
+- string DefaultStatusDescription
+- string DefaultWebExceptionMessage
+- array DefaultExceptionType
+- array DefaultCookies
+
+#### List of available values for each api configuration
+
+- int Delay (delay before FakeApi get HttpWebResponse)
+- int HttpCode
+- long ContentLength
+- string ContentType
+- bool IsFromCache
+- bool IsMutuallyAuthenticated
+- string Method
+- string ResponseUri
+- string Response
+- string StatusDescription
+- string WebExceptionMessage
+- array ExceptionType
+- array Cookies
+
+
+
 
 
