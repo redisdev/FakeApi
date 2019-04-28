@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="FakeApi" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Update="api.cfg.json">
@@ -15,8 +16,5 @@
     <None Update="DownloadFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Src\FakeApi\FakeApi.csproj" />
   </ItemGroup>
 </Project>

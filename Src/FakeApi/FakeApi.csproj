@@ -3,25 +3,33 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Authors>RedIsDev</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
     <Owners>RedIsDev</Owners>
     <PackageProjectUrl>https://github.com/peephole8062/redisdev-fakeapi/tree/master</PackageProjectUrl>
-    <Summary>Provides the ability to send httpwebrequest and get httpwebresponses without a server, just by configuration</Summary>
-    <PackageTags>c# http</PackageTags>
+    <Summary>Provides the ability to send HttpWebRequest and get HttpWebResponse without server</Summary>
+    <PackageTags>c# http netStandard mock</PackageTags>
     <Title>FakeApi</Title>
     <Description>Provides the ability to send HttpWebrequest and get HttpWebResponses without a server You can mock all available properties from HttpWebResponse .Net object with a json configuration file. This tool is not intrusive. 
-You simply switch between your own implementation of IHttpRequester and the implementation contained in this package</Description>
+With dependency injection you can simply switch between your own implementation of IHttpRequester and the implementation contained in this package</Description>
     <PackageId>FakeApi</PackageId>
     <ReleaseVersion>1.0.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <DelaySign>true</DelaySign>
+    <PackageLicenseUrl>https://github.com/peephole8062/redisdev-fakeapi/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Moq" Version="4.10.1" />
     <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="licence\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Link>licence\LICENSE</Link>
+    </None>
   </ItemGroup>
 </Project>

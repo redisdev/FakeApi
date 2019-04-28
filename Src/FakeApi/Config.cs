@@ -31,10 +31,6 @@ namespace FakeApi
 
         public string DefaultStatusDescription { get; set; }
 
-        public string DefaultWebExceptionMessage { get; set; }
-
-        public string DefaultExceptionType { get; set; }
-
         public IEnumerable<Cookie> DefaultCookies { get; set; }
 
         public IEnumerable<HttpHeader> DefaultHeaders { get; set; }
