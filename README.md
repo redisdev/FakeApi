@@ -249,6 +249,11 @@ public interface IHttpRequester
 - bool secure
 - int version
 
+#### List of available properties for header
+
+- string name
+- string value
+
 #### Json configuration full example
 
 ```json
