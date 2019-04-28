@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "Example\App\App.cspr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{DB272D54-807A-4FC1-8920-AF89B45CFF27}"
 	ProjectSection(SolutionItems) = preProject
-		pinterest_board_photo.png = pinterest_board_photo.png
+		logo.png = logo.png
 	EndProjectSection
 EndProject
 Global
