@@ -191,6 +191,7 @@ public interface IHttpRequester
     /// </summary>
     Task<HttpWebResponse> GetResponseAsync(HttpWebRequest request);
 }
+
 ```
 
 #### List of available default properties
@@ -225,7 +226,105 @@ public interface IHttpRequester
 - array ExceptionType
 - array Cookies
 
-#### Example
+#### Json configuration full example
+
+```json
+
+{
+  "defaultDelay": 500,
+  "defaultHttpCode": 200,
+  "defaultMethod": "GET",
+  "apis": [
+    {
+      "url": "http://localhost:8080/api/users/{idUser}",
+      "responses": [
+        {
+          "active": 1,
+          "delay": 300,
+          "httpCode": 200,
+          "response": "{ 'firstname': 'john', 'lastname':'doe', 'id': 567 }"
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:8080/api/orders/{orderId}/addresses/{addressId}}",
+      "responses": [
+        {
+          "active": 1,
+          "delay": 135,
+          "httpCode": 200,
+          "cookies": [
+            {
+              "name": "cookie1",
+              "value": "valCookie1"
+            },
+            {
+              "name": "cookie2",
+              "value": "valCookie2"
+            }
+          ],
+          "headers": [
+            {
+              "name": "header1",
+              "value": "valHeader1"
+            },
+            {
+              "name": "header2",
+              "value": "valHeader2  "
+            }
+          ],
+          "response": "{ 'orderId': 345, 'streetAddress':'2762 Highland Drive', 'city': 'Nina' }"
+        },
+        {
+          "active": 0,
+          "delay": 5000,
+          "httpCode": 203,
+          "response": "{ 'orderId': 345, 'streetAddress':'2762 Highland Drive', 'city': 'Nina' }"
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:8080/api/ad/{adId}",
+      "responses": [
+        {
+          "active": 1,
+          "httpCode": 400,
+          "webExceptionMessage": "Invalid ad id"
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:8080/api/ad/{adId}/custom-error",
+      "responses": [
+        {
+          "active": 1,
+          "httpCode": 500,
+          "customApiException": 
+          {
+            "fullTypeName": "App.CustomWebException, App",
+            "constructorArgs": [
+              "custom exception message"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:8080/api/get-file",
+      "responses": [
+        {
+          "active": 1,
+          "httpCode": 200,
+          "file": "DownloadFile.txt"
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+### Project example
 
 You can find a full project example under Example solution folder
 
