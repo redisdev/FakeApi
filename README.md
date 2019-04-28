@@ -206,7 +206,7 @@ public interface IHttpRequester
 
 #### List of available default properties
 
-- int DefaultDelay (delay before FakeApi get HttpWebResponse)
+- int DefaultDelay (simulate server latence)
 - int DefaultHttpCode
 - long DefaultContentLength
 - string DefaultContentType
@@ -220,7 +220,7 @@ public interface IHttpRequester
 
 #### List of available properties for each api configuration (to override default properties)
 
-- int Delay (delay before FakeApi get HttpWebResponse)
+- int Delay (simulate server latence)
 - int HttpCode
 - long ContentLength
 - string ContentType
