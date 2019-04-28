@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeApi", "Src\FakeApi\Fake
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "Example\App\App.csproj", "{456D7A10-3337-4692-A55D-65A3BFCA7BC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Img", "Img", "{3DF91F19-B7EC-46CD-9788-1C3B185AE95B}"
+	ProjectSection(SolutionItems) = preProject
+		logo.png = logo.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
