@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.3</PackageVersion>
     <Authors>RedIsDev</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
     <Owners>RedIsDev</Owners>
-    <PackageProjectUrl>https://github.com/peephole8062/redisdev-fakeapi/tree/master</PackageProjectUrl>
+    <PackageProjectUrl>https://redisdev.github.io/FakeApi/</PackageProjectUrl>
     <Summary>Provides the ability to send HttpWebRequest and get HttpWebResponse without server</Summary>
     <PackageTags>c# http netStandard mock</PackageTags>
     <Title>FakeApi</Title>
@@ -17,6 +17,7 @@ With dependency injection you can simply switch between your own implementation 
     <ReleaseVersion>1.0.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <PackageLicenseUrl>https://github.com/peephole8062/redisdev-fakeapi/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://doc-08-5k-docs.googleusercontent.com/docs/securesc/is6inad33ldgvql66su09preavus49kf/d4t27jcdvltvjehufu2b4ilslfqua5am/1556474400000/17737466453578750064/17737466453578750064/1Zj8RR-GaksjseQ5Gh48sLBotkQWPsFJC?nonce=o0c7tk84f7k2m&amp;user=17737466453578750064&amp;hash=6htetif1ellttm6c8h7l5au16neq7k7j</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
