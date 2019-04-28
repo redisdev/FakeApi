@@ -269,7 +269,6 @@ public interface IHttpRequester
         {
           "active": 1,
           "delay": 300,
-          "httpCode": 200,
           "response": "{ 'firstname': 'john', 'lastname':'doe', 'id': 567 }"
         }
       ]
@@ -280,7 +279,6 @@ public interface IHttpRequester
         {
           "active": 1,
           "delay": 135,
-          "httpCode": 200,
           "cookies": [
             {
               "name": "cookie1",
@@ -342,7 +340,6 @@ public interface IHttpRequester
       "responses": [
         {
           "active": 1,
-          "httpCode": 200,
           "file": "DownloadFile.txt"
         }
       ]
