@@ -79,7 +79,16 @@ You can add cookies and headers into HttpWebResponse:
           "cookies": [
             {
               "name": "cookie1",
-              "value": "valCookie1"
+              "value": "valCookie1",
+              "comment": "Comment1",
+              "discard": 0,
+              "domain": "domain1",
+              "expired": 1,
+              "expires": "2012-10-12",
+              "httpOnly": 1,
+              "path": "path1",
+              "secure": 1,
+              "version": 54
             },
             {
               "name": "cookie2",
