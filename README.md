@@ -119,7 +119,7 @@ Maybe you will have to test how your code reacts when a web exception are throwi
 
 - #### How to throw a custom exception?
 
-You can force FakeApi to throw your exceptions:
+You can force FakeApi to throw your own exceptions:
 
 ```json
 {
