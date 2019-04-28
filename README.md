@@ -43,7 +43,7 @@ Now, you can define your web api configuration:
       ]
     }
 ```
-For each web api you can set many responses. The first response flagged as active (active = 1) will be used by FakeApi.
+For each web api you can set many responses. The first response flagged as active (active = 1) will be used by FakeApi. At runtime you can switch between responses with changing active property value.
 Note that you can use template segment in your url configuration (/{idUser}).
 You can also override all default values defined at the root path in each apis configuration.
 
@@ -79,7 +79,16 @@ You can add cookies and headers into HttpWebResponse:
           "cookies": [
             {
               "name": "cookie1",
-              "value": "valCookie1"
+              "value": "valCookie1",
+              "comment": "Comment1",
+              "discard": 0,
+              "domain": "domain1",
+              "expired": 1,
+              "expires": "2012-10-12",
+              "httpOnly": 1,
+              "path": "path1",
+              "secure": 1,
+              "version": 54
             },
             {
               "name": "cookie2",
@@ -197,7 +206,7 @@ public interface IHttpRequester
 
 #### List of available default properties
 
-- int DefaultDelay (delay before FakeApi get HttpWebResponse)
+- int DefaultDelay (simulate server latence)
 - int DefaultHttpCode
 - long DefaultContentLength
 - string DefaultContentType
@@ -211,7 +220,7 @@ public interface IHttpRequester
 
 #### List of available properties for each api configuration (to override default properties)
 
-- int Delay (delay before FakeApi get HttpWebResponse)
+- int Delay (simulate server latence)
 - int HttpCode
 - long ContentLength
 - string ContentType
@@ -225,6 +234,25 @@ public interface IHttpRequester
 - object CustomApiException
 - array Cookies
 - array Headers
+
+#### List of available properties for cookie
+
+- string name
+- string value
+- string comment
+- bool discard
+- string domain
+- bool expired
+- dateTime expires
+- bool httpOnly
+- string path
+- bool secure
+- int version
+
+#### List of available properties for header
+
+- string name
+- string value
 
 #### Json configuration full example
 
@@ -241,7 +269,6 @@ public interface IHttpRequester
         {
           "active": 1,
           "delay": 300,
-          "httpCode": 200,
           "response": "{ 'firstname': 'john', 'lastname':'doe', 'id': 567 }"
         }
       ]
@@ -252,7 +279,6 @@ public interface IHttpRequester
         {
           "active": 1,
           "delay": 135,
-          "httpCode": 200,
           "cookies": [
             {
               "name": "cookie1",
@@ -314,7 +340,6 @@ public interface IHttpRequester
       "responses": [
         {
           "active": 1,
-          "httpCode": 200,
           "file": "DownloadFile.txt"
         }
       ]
