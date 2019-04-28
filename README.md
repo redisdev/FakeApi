@@ -43,7 +43,7 @@ Now, you can define your web api configuration:
       ]
     }
 ```
-For each web api you can set many responses. The first response flagged as active (active = 1) will be used by FakeApi.
+For each web api you can set many responses. The first response flagged as active (active = 1) will be used by FakeApi. At runtime you can switch between responses with changing active property value.
 Note that you can use template segment in your url configuration (/{idUser}).
 You can also override all default values defined at the root path in each apis configuration.
 
