@@ -168,6 +168,29 @@ using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
     Console.WriteLine($"json data from {getUserRequest.RequestUri}");
     Console.WriteLine($"Firstname : {user.Firstname} | Lastname : {user.Lastname} | Id : {user.Id}");
 }
+````
+- #### IHttpRequester
+
+In production, replace the FakeHttpRequester implemention of FakeApi by your own implementation.
+FakeHttpRequester implements IHttpRequester to provide method to send HttpWebRequest synchronous or asynchronous.
+
+```csharp
+
+/// <summary>
+/// Provides method to sending a web request
+/// </summary>
+public interface IHttpRequester
+{
+    /// <summary>
+    /// Gets the web response for <paramref name="request"/>
+    /// </summary>
+    HttpWebResponse GetResponse(HttpWebRequest request);
+
+    /// <summary>
+    /// Gets the web response async for <paramref name="request"/>
+    /// </summary>
+    Task<HttpWebResponse> GetResponseAsync(HttpWebRequest request);
+}
 ```
 
 #### List of available default properties
