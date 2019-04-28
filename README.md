@@ -235,6 +235,20 @@ public interface IHttpRequester
 - array Cookies
 - array Headers
 
+#### List of available properties for cookie
+
+- string name
+- string value
+- string comment
+- bool discard
+- string domain
+- bool expired
+- dateTime expires
+- bool httpOnly
+- string path
+- bool secure
+- int version
+
 #### Json configuration full example
 
 ```json
