@@ -207,8 +207,6 @@ public interface IHttpRequester
 - string DefaultResponseUri
 - string DefaultResponse
 - string DefaultStatusDescription
-- string DefaultWebExceptionMessage
-- array DefaultExceptionType
 - array DefaultCookies
 
 #### List of available properties for each api configuration (to override default properties)
@@ -224,8 +222,9 @@ public interface IHttpRequester
 - string Response
 - string StatusDescription
 - string WebExceptionMessage
-- array ExceptionType
+- object CustomApiException
 - array Cookies
+- array Headers
 
 #### Json configuration full example
 
