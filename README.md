@@ -13,7 +13,7 @@ FakeApi is for you!
 
 ### FakeApi configuration file
 
-First of all add to your project a json configuration file named as you like (don't forget to copy to output folder). 
+First of all add to your project a json configuration file named as you like. 
 
 - #### HttpWebResponse default values configuration
 
