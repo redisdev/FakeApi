@@ -1,3 +1,5 @@
+![logo](https://github.com/redisdev/FakeApi/blob/master/logo_fakeapi.png)
+
 # What is FakeApi?
 
 FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses without a server.
