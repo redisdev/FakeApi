@@ -6,6 +6,7 @@ FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses wit
 
 - You are waiting for your backend colleagues to finish developing the Web Api?
 - You need to quickly do a demo of a software and you do not have the time to develop Web Api?
+- Or you are writing unit tests and you have to mock HttpWebResponse?
 
 FakeApi is for you!
 
