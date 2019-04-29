@@ -112,7 +112,7 @@ You can add cookies and headers into HttpWebResponse:
 
 - #### How to throw a WebException?
 
-Maybe you will have to test how your code reacts when a web exception are throwing. To do that, you need to set the "webExceptionMessage" property:
+Maybe you will have to test how your code reacts when a web exception is throwing. To do that, you need to set the "webExceptionMessage" property:
 
 ```json
 {
