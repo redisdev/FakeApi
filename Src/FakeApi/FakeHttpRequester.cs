@@ -103,6 +103,10 @@ namespace FakeApi
 
             if (apiResponse.HasFile)
             {
+                if(!File.Exists(apiResponse.File))
+                {
+                    throw new FileLoadException($"File {apiResponse.File} not exists");
+                }
                 expectedBytes = Encoding.UTF8.GetBytes(File.ReadAllText(apiResponse.File));
             }
             else
