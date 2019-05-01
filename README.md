@@ -10,6 +10,15 @@ FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses wit
 
 FakeApi is for you!
 
+# Oldest versions documentation
+
+[v1.0.x](https://github.com/redisdev/FakeApi/tree/v1.0.3)
+
+# Release note
+
+- Adding the capability to set several actives responses. One per pair url/httpMethod. Please see web api configuration section
+- Improve configuration errors messages understanding
+
 # How to use FakeApi?
 
 ### FakeApi configuration file
@@ -39,12 +48,34 @@ Now, you can define your web api configuration:
           "active": 1,
           "delay": 300,
           "httpCode": 200,
+          "method": "GET",
           "response": "{ 'firstname': 'john', 'lastname':'doe', 'id': 567 }"
+        },
+        {
+          "active": 1,
+          "delay": 300,
+          "httpCode": 200,
+          "method": "PUT",
+          "response": "{ 'firstname': 'johnny', 'lastname':'doedoe', 'id': 567 }"
+        },
+        {
+          "active": 0,
+          "delay": 300,
+          "httpCode": 200,
+          "method": "GET",
+          "response": "{ 'firstname': 'bob', 'lastname':'dylan', 'id': 567 }"
+        },
+        {
+          "active": 0,
+          "delay": 300,
+          "httpCode": 200,
+          "method": "PUT",
+          "response": "{ 'firstname': 'bobby', 'lastname':'dylann', 'id': 567 }"
         }
       ]
     }
 ```
-For each web api you can set many responses. The first response flagged as active (active = 1) will be used by FakeApi. At runtime you can switch between responses with changing active property value.
+For each web api you can set several actives responses. One per pair url/method. At runtime you can switch between responses with changing active property value.
 Note that you can use template segment in your url configuration (/{idUser}).
 You can also override all default values defined at the root path in each apis configuration.
 
@@ -58,8 +89,9 @@ Simply set the "file" property into your api configuration:
       "responses": [
         {
           "active": 1,
+          "method": "GET",
           "httpCode": 200,
-          "file": "DownloadFile.txt"
+          "file": "getResponse.txt"
         }
       ]
     }
@@ -205,7 +237,7 @@ public interface IHttpRequester
 
 ```
 
-#### List of available default properties
+#### List of available default HttpWebResponse properties
 
 - int DefaultDelay (simulate server latence)
 - int DefaultHttpCode
@@ -219,7 +251,7 @@ public interface IHttpRequester
 - string DefaultStatusDescription
 - array DefaultCookies
 
-#### List of available properties for each api configuration (to override default properties)
+#### List of available properties for each HttpWebResponse configuration (for overriding default properties)
 
 - int Delay (simulate server latence)
 - int HttpCode
@@ -236,7 +268,7 @@ public interface IHttpRequester
 - array Cookies
 - array Headers
 
-#### List of available properties for cookie
+#### List of available properties for HttpWebResponse cookie
 
 - string name
 - string value
@@ -250,7 +282,7 @@ public interface IHttpRequester
 - bool secure
 - int version
 
-#### List of available properties for header
+#### List of available properties for HttpWebResponse header
 
 - string name
 - string value
