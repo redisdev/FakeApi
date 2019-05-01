@@ -14,7 +14,7 @@ FakeApi is for you!
 
 [v1.0.x](https://github.com/redisdev/FakeApi/tree/v1.0.3)
 
-# Release note
+# v1.1.x Release note
 
 - Adding the capability to set several actives responses. One per pair url/httpMethod. Please see web api configuration section
 - Improve configuration errors messages understanding
