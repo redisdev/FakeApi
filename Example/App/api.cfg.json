@@ -32,6 +32,7 @@
               "expires": "2012-10-12",
               "httpOnly": 1,
               "path": "path1",
+              "port": "\"8080\", \"8090\"",
               "secure": 1,
               "version": 54
             },
