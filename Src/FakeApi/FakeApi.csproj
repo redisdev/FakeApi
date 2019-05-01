@@ -17,7 +17,9 @@ With dependency injection you can simply switch between your own implementation 
     <ReleaseVersion>1.0.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <PackageLicenseUrl>https://github.com/peephole8062/redisdev-fakeapi/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://github.com/redisdev/FakeApi/blob/master/logo_fakeapi.png?raw=true53578750064/17737466453578750064/1Zj8RR-GaksjseQ5Gh48sLBotkQWPsFJC?nonce=o0c7tk84f7k2m&amp;user=17737466453578750064&amp;hash=6htetif1ellttm6c8h7l5au16neq7k7j</PackageIconUrl>
+    <PackageIconUrl>https://repository-images.githubusercontent.com/183810162/dcde3e80-69f4-11e9-91cd-37a3e6791fec</PackageIconUrl>
+    <PackageReleaseNotes>- Adding the capability to set several actives responses. One per pair url/httpMethod. Please see web api configuration section
+- Improve configuration errors messages understanding</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
