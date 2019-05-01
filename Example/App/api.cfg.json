@@ -9,8 +9,16 @@
         {
           "active": 1,
           "delay": 300,
+          "method": "GET",
           "httpCode": 200,
           "response": "{ 'firstname': 'john', 'lastname':'doe', 'id': 567 }"
+        },
+        {
+          "active": 1,
+          "delay": 300,
+          "method": "PUT",
+          "httpCode": 200,
+          "response": "{ 'firstname': 'johnny', 'lastname':'doedoe', 'id': 567 }"
         }
       ]
     },

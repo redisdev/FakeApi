@@ -83,20 +83,43 @@ namespace FakeApi
             }
         }
 
-        public HttpResponseMock GetResponseMock(string url)
+        public void Validate()
+        {
+            if(Apis == null || !Apis.Any())
+            {
+                throw new Exception("No apis configured");
+            }
+
+            if (Apis.Any(a => string.IsNullOrEmpty(a.Url)))
+            {
+                throw new Exception("At least one api has no url configured");
+            }
+
+            var responses = Apis.Where(a => a.Responses != null).SelectMany(a => a.Responses).ToList();
+
+            if (string.IsNullOrEmpty(DefaultMethod)
+                && (!responses.Any() || responses.Any(r => string.IsNullOrEmpty(r.Method))))
+            {
+                throw new Exception("At least one api has no http method configured");
+            }
+
+            if(string.IsNullOrEmpty(DefaultResponse)
+                && (!responses.Any() || responses.Any(r => !r.HasFile && !r.HasWebException && !r.HasCustomException && string.IsNullOrEmpty(r.Response))))
+            {
+                throw new Exception("At least one api has no response configured");
+            }
+        }
+
+        public HttpResponseMock GetResponseMock(string url, string method)
         {
             if(Apis == null)
             {
                 throw new InvalidOperationException($"Try to get fake response for url {url} but apis config not loaded");
             }
 
-            var apiCfg = Apis.Where(a =>
-                    TemplateMatcher.Match(new Uri(a.Url), new Uri(url)) 
-                    && a.Responses != null)
-                .SelectMany(a => a.Responses)
-                .SingleOrDefault(a => a.Active);
+            var apiCfg = Apis.Where(a =>                     TemplateMatcher.Match(new Uri(a.Url), new Uri(url))                     && a.Responses != null)                 .SelectMany(a => a.Responses)                 .SingleOrDefault(a => a.Active                                 && (string.Equals(a.Method ?? DefaultMethod, method, StringComparison.InvariantCultureIgnoreCase)));
 
-            if(apiCfg == null)
+            if (apiCfg == null)
             {
                 return new HttpResponseMock();
             }

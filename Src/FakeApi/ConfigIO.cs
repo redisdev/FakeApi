@@ -21,6 +21,8 @@ namespace FakeApi
                 throw new FileLoadException($"An error occured when deserialized file content");
             }
 
+            config.Validate();
+
             return config;
         }
 

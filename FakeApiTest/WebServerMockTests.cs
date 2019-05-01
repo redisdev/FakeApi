@@ -148,6 +148,7 @@ namespace FakeApiTest
 
             var requester = new FakeHttpRequester(filePath);
             var webRequest = (HttpWebRequest)WebRequest.Create("http://localhost/api/products/2/something");
+            webRequest.Method = "Put";
 
             //Act
             var webResponse = requester.GetResponse(webRequest);
@@ -193,6 +194,7 @@ namespace FakeApiTest
             //Arrange
             var filePath = "apisConfig.json";
             var config = new Config();
+            config.DefaultMethod = "PUT";
             var api = new ApiConfig();
             config.Apis = new[] { api };
             api.Url = "http://localhost/api/products/{idProduct}/something";
@@ -205,6 +207,7 @@ namespace FakeApiTest
 
             var requester = new FakeHttpRequester(filePath);
             var webRequest = (HttpWebRequest)WebRequest.Create("http://localhost/api/products/2/something");
+            webRequest.Method = "PUT";
 
             //Act
             var webResponse = requester.GetResponse(webRequest);
@@ -223,6 +226,7 @@ namespace FakeApiTest
             //Arrange
             var filePath = "apisConfig.json";
             var config = new Config();
+            config.DefaultMethod = "Post";
             var api = new ApiConfig();
             config.Apis = new[] { api };
             api.Url = "http://localhost/api/products/{idProduct}/something";
@@ -235,6 +239,7 @@ namespace FakeApiTest
 
             var requester = new FakeHttpRequester(filePath);
             var webRequest = (HttpWebRequest)WebRequest.Create("http://localhost/api/products/2/something");
+            webRequest.Method = "POST";
 
             //Act
             var exception = Assert.ThrowsException<WebException>(() =>
@@ -252,6 +257,7 @@ namespace FakeApiTest
             //Arrange
             var filePath = "apisConfig.json";
             var config = new Config();
+            config.DefaultMethod = "PUT";
             var api = new ApiConfig();
             config.Apis = new[] { api };
             api.Url = "http://localhost/api/products/{idProduct}/something";
@@ -268,6 +274,7 @@ namespace FakeApiTest
 
             var requester = new FakeHttpRequester(filePath);
             var webRequest = (HttpWebRequest)WebRequest.Create("http://localhost/api/products/2/something");
+            webRequest.Method = "PUT";
 
             //Act
             var exception = Assert.ThrowsException<CustomWebException>(() =>

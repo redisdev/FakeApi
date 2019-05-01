@@ -34,8 +34,13 @@ namespace FakeApi
                 throw new ArgumentNullException(nameof(request));
             }
 
+            if(string.IsNullOrEmpty(request.Method))
+            {
+                throw new ArgumentException("No method defined on request");
+            }
+
             var config = ConfigIO.GetConfig(_configSource);
-            var apiResponse = config.GetResponseMock(request.RequestUri.AbsoluteUri);
+            var apiResponse = config.GetResponseMock(request.RequestUri.AbsoluteUri, request.Method);
 
             if (apiResponse.HasCustomException)
             {
