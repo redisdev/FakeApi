@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -33,8 +34,22 @@ namespace FakeApiTest
             };
             config.DefaultCookies = new[]
             {
-                new Cookie("ck1", "ck1Value"),
-                new Cookie("ck2", "ck2Value")
+                new Cookie("ck1", "ck1Value")
+                {
+
+                    Comment = "comment1",
+                    CommentUri = new System.Uri("https://localhost/comment"),
+                    Discard = true,
+                    Domain = "domain1",
+                    Expired = true,
+                    Expires= DateTime.Now,
+                    HttpOnly = true,
+                    Path = "path",
+                    Port = "\"80\", \"8080\"",
+                    Secure = true,
+                    Version = 56
+                },
+                new Cookie("ck1", "ck1Value")
             };
             config.DefaultHeaders = new[]
             {
@@ -72,6 +87,18 @@ namespace FakeApiTest
                 var cookieResponse = response.Cookies[i];
                 Assert.AreEqual(cookieCfg.Name, cookieResponse.Name);
                 Assert.AreEqual(cookieCfg.Value, cookieResponse.Value);
+                Assert.AreEqual(cookieCfg.Comment, cookieResponse.Comment);
+                if(cookieCfg.CommentUri != null)
+                {
+                    Assert.AreEqual(cookieCfg.CommentUri.ToString(), cookieResponse.CommentUri.ToString());
+                }
+                Assert.AreEqual(cookieCfg.Domain, cookieResponse.Domain);
+                Assert.AreEqual(cookieCfg.Path, cookieResponse.Path);
+                Assert.AreEqual(cookieCfg.Port, cookieResponse.Port);
+                Assert.AreEqual(cookieCfg.Expired, cookieResponse.Expired);
+                Assert.AreEqual(cookieCfg.Secure, cookieResponse.Secure);
+                Assert.AreEqual(cookieCfg.Expires, cookieResponse.Expires);
+                Assert.AreEqual(cookieCfg.Version, cookieResponse.Version);
             }
 
             for (int i = 0; i < config.DefaultHeaders.Count(); i++)

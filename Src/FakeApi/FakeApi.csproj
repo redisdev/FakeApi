@@ -9,15 +9,15 @@
     <Owners>RedIsDev</Owners>
     <PackageProjectUrl>https://redisdev.github.io/FakeApi/</PackageProjectUrl>
     <Summary>Provides the ability to send HttpWebRequest and get HttpWebResponse without server</Summary>
-    <PackageTags>c# http netStandard mock</PackageTags>
+    <PackageTags>c# http netStandard mock unittest webapi httpWebRequest httpWebResponse</PackageTags>
     <Title>FakeApi</Title>
-    <Description>Provides the ability to send HttpWebrequest and get HttpWebResponses without a server. You can mock all available properties from HttpWebResponse .Net object with a json configuration file. This tool is not intrusive. 
+    <Description>Provides the ability to send HttpWebRequest and get HttpWebResponses without a server. You can mock all available properties from HttpWebResponse .Net object with a json configuration file. This tool is not intrusive. 
 With dependency injection you can simply switch between your own implementation of IHttpRequester and the implementation contained in this package</Description>
     <PackageId>FakeApi</PackageId>
     <ReleaseVersion>1.0.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <PackageLicenseUrl>https://github.com/peephole8062/redisdev-fakeapi/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://doc-08-5k-docs.googleusercontent.com/docs/securesc/is6inad33ldgvql66su09preavus49kf/d4t27jcdvltvjehufu2b4ilslfqua5am/1556474400000/17737466453578750064/17737466453578750064/1Zj8RR-GaksjseQ5Gh48sLBotkQWPsFJC?nonce=o0c7tk84f7k2m&amp;user=17737466453578750064&amp;hash=6htetif1ellttm6c8h7l5au16neq7k7j</PackageIconUrl>
+    <PackageIconUrl>https://github.com/redisdev/FakeApi/blob/master/logo_fakeapi.png?raw=true53578750064/17737466453578750064/1Zj8RR-GaksjseQ5Gh48sLBotkQWPsFJC?nonce=o0c7tk84f7k2m&amp;user=17737466453578750064&amp;hash=6htetif1ellttm6c8h7l5au16neq7k7j</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
