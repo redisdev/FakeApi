@@ -112,7 +112,17 @@ namespace FakeApi
 
         public HttpResponseMock GetResponseMock(string url, string method)
         {
-            if(Apis == null)
+            if (string.IsNullOrEmpty(url))
+            {
+                throw new ArgumentNullException(nameof(url));
+            }
+
+            if (string.IsNullOrEmpty(method))
+            {
+                throw new ArgumentNullException(nameof(method));
+            }
+
+            if (Apis == null)
             {
                 throw new InvalidOperationException($"Try to get fake response for url {url} but apis config not loaded");
             }
