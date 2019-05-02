@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using FakeApi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -37,7 +38,20 @@ namespace FakeApiTest
                 ConfigIO.GetConfig("BadConfigFile.json");
             });
 
+            //Assert
             Assert.AreEqual("An error occured when deserialized file content", ex.Message);
+        }
+
+        [TestMethod]
+        public void WriteConfig_ShouldThrowExceptionIfConfigIsNull()
+        {
+            var ex = Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                ConfigIO.WriteConfig(null, "path");
+            });
+
+            //Assert
+            Assert.AreEqual("config", ex.ParamName);
         }
     }
 }

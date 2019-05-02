@@ -6,8 +6,6 @@ namespace FakeApi
     internal static class TemplateMatcher
     {
         const string LEFT_ACCOLADE = "%7B";
-        const string RIGHT_ACCOLADE = "%7D";
-        const string RIGHT_ACCOLADE_WITH_SLASH = RIGHT_ACCOLADE + "/";
 
         public static bool Match(Uri template, Uri uri)
         {
@@ -36,9 +34,7 @@ namespace FakeApi
                 var templateSegment = template.Segments[i];
 
                 //escape route parameter
-                if(templateSegment.StartsWith(LEFT_ACCOLADE, StringComparison.InvariantCulture)
-                    && (templateSegment.EndsWith(RIGHT_ACCOLADE, StringComparison.InvariantCulture)
-                    || templateSegment.EndsWith(RIGHT_ACCOLADE_WITH_SLASH, StringComparison.InvariantCulture)))
+                if(templateSegment.StartsWith(LEFT_ACCOLADE, StringComparison.InvariantCulture))
                 {
                     continue;
                 }
@@ -62,8 +58,7 @@ namespace FakeApi
                 var templateSplit = templateQuerySplit[i];
 
                 //escape query parameter
-                if (templateSplit.StartsWith(LEFT_ACCOLADE, StringComparison.InvariantCulture)
-                    && templateSplit.EndsWith(RIGHT_ACCOLADE, StringComparison.InvariantCulture))
+                if (templateSplit.StartsWith(LEFT_ACCOLADE, StringComparison.InvariantCulture))
                 {
                     continue;
                 }
