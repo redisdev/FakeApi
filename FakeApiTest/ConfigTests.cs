@@ -21,7 +21,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual(ex.Message, "No apis configured");
+            Assert.AreEqual("No apis configured", ex.Message);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual(ex.Message, "At least one api has no url configured");
+            Assert.AreEqual("At least one api has no url configured", ex.Message);
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual(ex.ParamName, "url");
+            Assert.AreEqual("url", ex.ParamName);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual(ex.ParamName, "method");
+            Assert.AreEqual("method", ex.ParamName);
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual(ex.Message, "No apis configured");
+            Assert.AreEqual("No apis configured", ex.Message);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual(ex.Message, "At least one api has no response configured");
+            Assert.AreEqual("At least one api has no response configured", ex.Message);
         }
 
         [TestMethod]
@@ -138,7 +138,23 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual(ex.Message, "At least one api has no http method configured");
+            Assert.AreEqual("At least one api has no http method configured", ex.Message);
+        }
+
+        [TestMethod]
+        public void GetResponseMock_ShouldThrowExceptionIfApiIsNull()
+        {
+            //Arrange
+            var config = new Config();
+
+            //Act
+            var ex = Assert.ThrowsException<InvalidOperationException>(() =>
+            {
+                config.GetResponseMock("http://localhost", "method");
+            });
+
+            //Assert
+            Assert.AreEqual("Try to get fake response for url http://localhost but apis config not loaded", ex.Message);
         }
     }
 }
