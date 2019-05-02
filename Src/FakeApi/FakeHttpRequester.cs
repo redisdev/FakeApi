@@ -20,7 +20,7 @@ namespace FakeApi
         /// <param name="configSource">Apis configuration file path</param>
         public FakeHttpRequester(string configSource)
         {
-            _configSource = configSource;
+            _configSource = configSource ?? throw new ArgumentNullException(nameof(configSource));
         }
 
         /// <summary>
@@ -32,11 +32,6 @@ namespace FakeApi
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(request));
-            }
-
-            if(string.IsNullOrEmpty(request.Method))
-            {
-                throw new ArgumentException("No method defined on request");
             }
 
             var config = ConfigIO.GetConfig(_configSource);

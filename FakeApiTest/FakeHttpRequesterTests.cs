@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FakeApiTest
 {
     [TestClass]
-    public class WebServerMockTests
+    public class FakeHttpRequesterTests
     {
         [TestMethod]
         public void ShouldMockPropertiesFromDefaultConfig()
@@ -81,14 +81,14 @@ namespace FakeApiTest
                 Assert.AreEqual(config.DefaultResponse, content);
             }
 
-            for(int i = 0; i < config.DefaultCookies.Count(); i++)
+            for (int i = 0; i < config.DefaultCookies.Count(); i++)
             {
                 var cookieCfg = config.DefaultCookies.ElementAt(i);
                 var cookieResponse = response.Cookies[i];
                 Assert.AreEqual(cookieCfg.Name, cookieResponse.Name);
                 Assert.AreEqual(cookieCfg.Value, cookieResponse.Value);
                 Assert.AreEqual(cookieCfg.Comment, cookieResponse.Comment);
-                if(cookieCfg.CommentUri != null)
+                if (cookieCfg.CommentUri != null)
                 {
                     Assert.AreEqual(cookieCfg.CommentUri.ToString(), cookieResponse.CommentUri.ToString());
                 }
@@ -284,7 +284,22 @@ namespace FakeApiTest
 
             //Assert
             Assert.AreEqual(responseCfg.CustomApiException.ConstructorArgs.First(), exception.Message);
+        }
 
+        [TestMethod]
+        public void ShouldThrowExceptionWhenRequestIsNull()
+        {
+            //Arrange
+            var requester = new FakeHttpRequester("");
+
+            //Act
+            var exception = Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                requester.GetResponse(null);
+            });
+
+            //Assert
+            Assert.AreEqual("request", exception.ParamName);
         }
     }
 }
