@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/redisdev/FakeApi/_apis/build/status/redisdev.FakeApi?branchName=master)](https://dev.azure.com/redisdev/FakeApi/_build/latest?definitionId=1&branchName=master)
+
 # What is FakeApi?
 
 FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses without a server.
