@@ -14,7 +14,16 @@ namespace FakeApi
             }
 
             var configText = File.ReadAllText(configSource);
-            var config = JsonConvert.DeserializeObject<Config>(configText);
+
+            Config config;
+            try
+            {
+                config = JsonConvert.DeserializeObject<Config>(configText);
+            }
+            catch (JsonReaderException)
+            {
+                throw;
+            }
 
             if(config == null)
             {
