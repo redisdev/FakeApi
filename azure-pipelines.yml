@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
   branches:
     include:
@@ -19,7 +14,7 @@ steps:
 - script: |
     mkdir $(Build.SourcesDirectory)\results
     dotnet tool install --global coverlet.console
-    dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura FakeApiTest\FakeApiTest.csproj
+    dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura FakeApiTest\FakeApiTest.csproj /p:Exclude=\"[FakeApiTest]*"
     copy $(Build.SourcesDirectory)\FakeApiTest\coverage.cobertura.xml $(Build.SourcesDirectory)\results
     dotnet tool install dotnet-reportgenerator-globaltool --tool-path . --version 4.0.0-rc4
     .\reportgenerator "-reports:$(Build.SourcesDirectory)\FakeApiTest\coverage.cobertura.xml" "-targetdir:results" "-reporttypes:HTMLInline;HTMLChart"
