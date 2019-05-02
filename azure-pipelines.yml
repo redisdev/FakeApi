@@ -22,6 +22,6 @@ steps:
     testResultsFiles: '**/*.trx'
 - task: PublishCodeCoverageResults@1
   inputs:
-    summaryFileLocation: $(Build.SourcesDirectory)\results\coverage.cobertura.xml
-    reportDirectory: $(Build.SourcesDirectory)\results
+    summaryFileLocation: $(Build.SourcesDirectory)\coverage.cobertura.xml
+    reportDirectory: $(Build.SourcesDirectory)
     codecoverageTool: cobertura
