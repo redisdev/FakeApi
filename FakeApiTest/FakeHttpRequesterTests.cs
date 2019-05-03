@@ -290,7 +290,7 @@ namespace FakeApiTest
         public void ShouldThrowExceptionWhenRequestIsNull()
         {
             //Arrange
-            var requester = new FakeHttpRequester("");
+            var requester = new FakeHttpRequester("DownloadFile.txt");
 
             //Act
             var exception = Assert.ThrowsException<ArgumentNullException>(() =>
@@ -300,6 +300,32 @@ namespace FakeApiTest
 
             //Assert
             Assert.AreEqual("request", exception.ParamName);
+        }
+
+        [TestMethod]
+        public void ShouldThrowExceptionWhenConfigSourceIsNull()
+        {
+            //Act
+            var exception = Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                new FakeHttpRequester(null);
+            });
+
+            //Assert
+            Assert.AreEqual("configSource", exception.ParamName);
+        }
+
+        [TestMethod]
+        public void ShouldThrowExceptionWhenFileNotExists()
+        {
+            //Act
+            var exception = Assert.ThrowsException<FileLoadException>(() =>
+            {
+                new FakeHttpRequester("FakePath");
+            });
+
+            //Assert
+            Assert.AreEqual("File FakePath nor exists", exception.Message);
         }
     }
 }

@@ -21,6 +21,10 @@ namespace FakeApi
         public FakeHttpRequester(string configSource)
         {
             _configSource = configSource ?? throw new ArgumentNullException(nameof(configSource));
+            if(!File.Exists(configSource))
+            {
+                throw new FileLoadException($"File {configSource} nor exists");
+            }
         }
 
         /// <summary>
