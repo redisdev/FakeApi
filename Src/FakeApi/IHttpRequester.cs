@@ -11,11 +11,11 @@ namespace FakeApi
         /// <summary>
         /// Gets the web response for <paramref name="request"/>
         /// </summary>
-        HttpWebResponse GetResponse(HttpWebRequest request);
+        HttpWebResponse GetResponse(WebRequest request);
 
         /// <summary>
         /// Gets the web response async for <paramref name="request"/>
         /// </summary>
-        Task<HttpWebResponse> GetResponseAsync(HttpWebRequest request);
+        Task<HttpWebResponse> GetResponseAsync(WebRequest request);
     }
 }

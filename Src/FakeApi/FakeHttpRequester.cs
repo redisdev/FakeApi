@@ -31,7 +31,7 @@ namespace FakeApi
         /// Return mock of HttpWebResponse from the information defined in the configuration file
         /// </summary>
         /// <param name="request">Request to be sent</param>
-        public HttpWebResponse GetResponse(HttpWebRequest request)
+        public HttpWebResponse GetResponse(WebRequest request)
         {
             if (request == null)
             {
@@ -63,7 +63,7 @@ namespace FakeApi
         /// Return asynchronous mock of HttpWebResponse from the information defined in the configuration file
         /// </summary>
         /// <param name="request">Request to be sent</param>
-        public async Task<HttpWebResponse> GetResponseAsync(HttpWebRequest request)
+        public async Task<HttpWebResponse> GetResponseAsync(WebRequest request)
         {
             return await Task.FromResult(GetResponse(request));
         }
