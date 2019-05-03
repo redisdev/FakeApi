@@ -23,7 +23,7 @@ namespace FakeApi
             _configSource = configSource ?? throw new ArgumentNullException(nameof(configSource));
             if(!File.Exists(configSource))
             {
-                throw new FileLoadException($"File {configSource} nor exists");
+                throw new FileLoadException($"File {configSource} not exists");
             }
         }
 
@@ -101,8 +101,6 @@ namespace FakeApi
 
         private static MemoryStream CreateResponseStream(Config config, HttpResponseMock apiResponse)
         {
-            byte[] expectedBytes;
-
             var responseStream = new MemoryStream();
 
             if (apiResponse.HasFile)
@@ -111,14 +109,18 @@ namespace FakeApi
                 {
                     throw new FileLoadException($"File {apiResponse.File} not exists");
                 }
-                expectedBytes = Encoding.UTF8.GetBytes(File.ReadAllText(apiResponse.File));
+
+                using (var streamReader = new StreamReader(apiResponse.File))
+                {
+                    streamReader.BaseStream.CopyTo(responseStream);
+                }
             }
             else
             {
-                expectedBytes = Encoding.UTF8.GetBytes(apiResponse.Response ?? config.DefaultResponse);
+                var expectedBytes = Encoding.UTF8.GetBytes(apiResponse.Response ?? config.DefaultResponse);
+                responseStream.Write(expectedBytes, 0, expectedBytes.Length);
             }
 
-            responseStream.Write(expectedBytes, 0, expectedBytes.Length);
             responseStream.Seek(0, SeekOrigin.Begin);
             return responseStream;
         }

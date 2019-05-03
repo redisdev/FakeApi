@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace FakeApi
 {
@@ -36,6 +37,8 @@ namespace FakeApi
         public IEnumerable<HttpHeader> DefaultHeaders { get; set; }
 
         public IEnumerable<ApiConfig> Apis { get; set; }
+
+        public IEnumerable<string> ApisDirectories { get; set; }
 
         [JsonIgnore]
         public CookieCollection CookieCollection

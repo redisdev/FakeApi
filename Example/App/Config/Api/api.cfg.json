@@ -1,7 +1,10 @@
 ﻿{
-  "defaultDelay": 500,
+  "defaultDelay": 250,
   "defaultHttpCode": 200,
   "defaultMethod": "GET",
+  "apisDirectories": [
+      "Config/Api/User"
+  ],
   "apis": [
     {
       "url": "http://localhost:8080/api/users/{idUser}",

@@ -39,7 +39,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual("An error occured when deserialized file content", ex.Message);
+            Assert.AreEqual("An error occured when deserialized file BadConfigFile.json", ex.Message);
         }
 
         [TestMethod]

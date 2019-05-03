@@ -1,0 +1,14 @@
+﻿{
+  "results": [
+    {
+      "userId": 512,
+      "firstname": "paul",
+      "lastname": "mc cartney"
+    },
+    {
+      "id": 1024,
+      "firstname": "quentin",
+      "lastname": "tarantino"
+    }
+  ]
+}

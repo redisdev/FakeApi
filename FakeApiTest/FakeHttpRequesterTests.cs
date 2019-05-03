@@ -325,7 +325,7 @@ namespace FakeApiTest
             });
 
             //Assert
-            Assert.AreEqual("File FakePath nor exists", exception.Message);
+            Assert.AreEqual("File FakePath not exists", exception.Message);
         }
     }
 }
