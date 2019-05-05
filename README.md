@@ -16,7 +16,7 @@ FakeApi is for you!
 
 [v1.1.x](https://github.com/redisdev/FakeApi/tree/v1.1.1)
 
-# v1.1.x Release note
+# v1.2.0 Release note
 
 - Improvement of configuration files reading
 - Adding the capability to split the api configurations files into several files
