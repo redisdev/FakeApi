@@ -12,7 +12,7 @@ namespace FakeApi
         private CookieCollection _cookieCollection;
         private WebHeaderCollection _headerCollection;
 
-        public int DefaultDelay { get; set; }
+        public int? DefaultDelay { get; set; }
 
         public int DefaultHttpCode { get; set; }
 

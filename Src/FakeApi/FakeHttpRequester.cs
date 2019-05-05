@@ -54,7 +54,7 @@ namespace FakeApi
 
             var response = CreateResponseMock(config, apiResponse);
 
-            Task.Delay(apiResponse.Delay ?? config.DefaultDelay).Wait();
+            Task.Delay(apiResponse.Delay ?? config.DefaultDelay.GetValueOrDefault()).Wait();
 
             return response.Object;
         }
