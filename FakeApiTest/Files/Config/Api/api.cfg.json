@@ -1,0 +1,6 @@
+﻿{
+  "defaultMethod": "GET",
+  "apisDirectories": [
+    "Files/Config/Api"
+      ]
+}

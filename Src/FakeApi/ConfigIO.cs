@@ -61,7 +61,7 @@ namespace FakeApi
             File.WriteAllText(configFilePath, JsonConvert.SerializeObject(config));
         }
 
-        private static void MergeApis(Config config, string configSource)
+        public static void MergeApis(Config config, string configSource)
         {
             if (config.ApisDirectories == null)
             {
@@ -78,6 +78,10 @@ namespace FakeApi
                 foreach (var file in Directory.GetFiles(directory).Except(new List<string> { configSource }))
                 {
                     var apis = LoadConfig(file).Apis;
+                    if(config.Apis == null)
+                    {
+                        config.Apis = new List<ApiConfig>();
+                    }
                     config.Apis = new List<ApiConfig>(config.Apis.Union(apis));
                 }
             }

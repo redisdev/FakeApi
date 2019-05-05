@@ -1,0 +1,46 @@
+﻿{
+  "apis": [
+    {
+      "url": "https://localhost/api/users/{userId}",
+      "responses": [
+        {
+          "active": 1,
+          "file": "Config/Api/User/Response/getUserById.json"
+        },
+        {
+          "active": 1,
+          "method": "PUT",
+          "file": "Config/Api/User/Response/putUser.json"
+        }
+      ]
+    },
+    {
+      "url": "https://localhost/api/users",
+      "responses": [
+        {
+          "active": 1,
+          "method": "POST",
+          "file": "Config/Api/User/Response/postUser1.json"
+        },
+        {
+          "active": 0,
+          "method": "POST",
+          "file": "Config/Api/User/Response/postUser2.json"
+        }
+      ]
+    },
+    {
+      "url": "https://localhost/api/users?pIndex={0}&pSize={1}",
+      "responses": [
+        {
+          "active": 1,
+          "file": "Config/Api/User/Response/searchUsersPage0.json"
+        },
+        {
+          "active": 0,
+          "file": "Config/Api/User/Response/searchUsersPage1.json"
+        }
+      ]
+    }
+  ]
+}

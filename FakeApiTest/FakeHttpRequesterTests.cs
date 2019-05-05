@@ -201,7 +201,7 @@ namespace FakeApiTest
             var responseCfg = new HttpResponseMock();
             api.Responses = new[] { responseCfg };
             responseCfg.Active = true;
-            responseCfg.File = "DownloadFile.txt";
+            responseCfg.File = "Files/DownloadFile.txt";
 
             ConfigIO.WriteConfig(config, filePath);
 
@@ -216,7 +216,7 @@ namespace FakeApiTest
             using (var streamReader = new StreamReader(webResponse.GetResponseStream()))
             {
                 var content = streamReader.ReadToEnd();
-                Assert.AreEqual(File.ReadAllText("DownloadFile.txt"), content);
+                Assert.AreEqual(File.ReadAllText("Files/DownloadFile.txt"), content);
             }
         }
 
@@ -290,7 +290,7 @@ namespace FakeApiTest
         public void ShouldThrowExceptionWhenRequestIsNull()
         {
             //Arrange
-            var requester = new FakeHttpRequester("DownloadFile.txt");
+            var requester = new FakeHttpRequester("Files/DownloadFile.txt");
 
             //Act
             var exception = Assert.ThrowsException<ArgumentNullException>(() =>

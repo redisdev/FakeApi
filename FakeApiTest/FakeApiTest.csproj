@@ -14,14 +14,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DownloadFile.txt">
+    <None Update="Files\BadConfigFile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="BadConfigFile.json">
+    <None Update="Files\DownloadFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\Config\Api\usersApi.cfg.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\Config\Api\api.cfg.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\Config\Api\ordersApi.cfg.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Src\FakeApi\FakeApi.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Files\" />
+    <Folder Include="Files\Config\" />
+    <Folder Include="Files\Config\Api\" />
   </ItemGroup>
 </Project>

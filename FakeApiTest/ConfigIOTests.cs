@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using FakeApi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -26,7 +27,7 @@ namespace FakeApiTest
         {
             Assert.ThrowsException<JsonReaderException>(() =>
             {
-                ConfigIO.GetConfig("DownloadFile.txt");
+                ConfigIO.GetConfig("Files/DownloadFile.txt");
             });
         }
 
@@ -35,11 +36,11 @@ namespace FakeApiTest
         {
             var ex = Assert.ThrowsException<FileLoadException>(() =>
             {
-                ConfigIO.GetConfig("BadConfigFile.json");
+                ConfigIO.GetConfig("Files/BadConfigFile.json");
             });
 
             //Assert
-            Assert.AreEqual("An error occured when deserialized file BadConfigFile.json", ex.Message);
+            Assert.AreEqual("An error occured when deserialized file Files/BadConfigFile.json", ex.Message);
         }
 
         [TestMethod]
@@ -52,6 +53,16 @@ namespace FakeApiTest
 
             //Assert
             Assert.AreEqual("config", ex.ParamName);
+        }
+
+        [TestMethod]
+        public void ShouldMergeApisConfigFiles()
+        {
+            //Act
+            var config = ConfigIO.GetConfig("Files/Config/Api/api.cfg.json");
+
+            //Assert
+            Assert.AreEqual(4, config.Apis.Count());
         }
     }
 }
