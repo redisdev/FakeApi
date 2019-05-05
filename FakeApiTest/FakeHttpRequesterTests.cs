@@ -11,7 +11,9 @@ namespace FakeApiTest
     public class FakeHttpRequesterTests
     {
         [TestMethod]
-        public void ShouldMockPropertiesFromDefaultConfig()
+        [DataRow(true)]
+        [DataRow(false)]
+        public void ShouldMockPropertiesFromDefaultConfig(bool runAsync)
         {
             //Arrange
             var filePath = "apisConfig.json";
@@ -63,7 +65,7 @@ namespace FakeApiTest
             var webRequest = (HttpWebRequest)WebRequest.Create("http://localhost/api/products/2/something");
 
             //Act
-            var response = requester.GetResponse(webRequest);
+            var response = runAsync ? requester.GetResponseAsync(webRequest).Result : requester.GetResponse(webRequest);
 
             //Assert
             Assert.AreEqual(config.DefaultContentType, response.ContentType);
