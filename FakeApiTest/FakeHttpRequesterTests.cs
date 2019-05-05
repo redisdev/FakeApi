@@ -126,6 +126,7 @@ namespace FakeApiTest
             var responseCfg = new HttpResponseMock();
             api.Responses = new[] { responseCfg };
             responseCfg.Active = true;
+            responseCfg.Delay = 100;
             responseCfg.ContentLength = 2565121024;
             responseCfg.ContentType = "defaultContentType";
             responseCfg.HttpCode = (int)HttpStatusCode.Ambiguous;
