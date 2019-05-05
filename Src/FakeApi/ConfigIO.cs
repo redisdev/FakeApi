@@ -72,7 +72,7 @@ namespace FakeApi
             {
                 if (!Directory.Exists(directory))
                 {
-                    throw new DirectoryNotFoundException(directory);
+                    throw new DirectoryNotFoundException($"Directory {directory} not found");
                 }
 
                 foreach (var file in Directory.GetFiles(directory).Except(new List<string> { configSource }))

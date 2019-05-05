@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FakeApi;
@@ -63,6 +64,21 @@ namespace FakeApiTest
 
             //Assert
             Assert.AreEqual(4, config.Apis.Count());
+        }
+
+        [TestMethod]
+        public void MergeApis_ShouldThrowExceptionWhenDirectoryNotFound()
+        {
+            //Arrange
+            var config = new Config();
+            config.ApisDirectories = new List<string> { "fakeDirectories" };
+
+            //Assert
+            var ex = Assert.ThrowsException<DirectoryNotFoundException>(() =>
+            {
+                ConfigIO.MergeApis(config, "configSource");
+            });
+            Assert.AreEqual("Directory fakeDirectories not found", ex.Message);
         }
     }
 }
