@@ -78,6 +78,10 @@ namespace FakeApi
                 foreach (var file in Directory.GetFiles(directory).Except(new List<string> { configSource }))
                 {
                     var apis = LoadConfig(file).Apis;
+                    if(apis == null)
+                    {
+                        continue;
+                    }
                     if(config.Apis == null)
                     {
                         config.Apis = new List<ApiConfig>();
