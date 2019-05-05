@@ -327,5 +327,22 @@ namespace FakeApiTest
             //Assert
             Assert.AreEqual("File FakePath not exists", exception.Message);
         }
+
+        [TestMethod]
+        public void CreateResponseStream_ShouldThrowExceptionWhenFileNotExists()
+        {
+            //Arrange
+            var responseMock = new HttpResponseMock();
+            responseMock.File = "FakeFile";
+
+            //Act
+            var ex = Assert.ThrowsException<FileLoadException>(() =>
+           {
+               FakeHttpRequester.CreateResponseStream(null, responseMock);
+           });
+
+            //Assert
+            Assert.AreEqual("File FakeFile not exists", ex.Message);
+        }
     }
 }

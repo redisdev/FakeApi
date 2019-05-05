@@ -99,7 +99,7 @@ namespace FakeApi
             return response;
         }
 
-        private static MemoryStream CreateResponseStream(Config config, HttpResponseMock apiResponse)
+        internal static MemoryStream CreateResponseStream(Config config, HttpResponseMock apiResponse)
         {
             var responseStream = new MemoryStream();
 
