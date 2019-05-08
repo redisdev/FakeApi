@@ -1,5 +1,7 @@
 [![Build Status](https://dev.azure.com/redisdev/FakeApi/_apis/build/status/redisdev.FakeApi?branchName=master)](https://dev.azure.com/redisdev/FakeApi/_build/latest?definitionId=1&branchName=master)
 
+[![NuGet](https://img.shields.io/nuget/v/FakeApi.svg)](https://www.nuget.org/packages/FakeApi/)
+
 # What is FakeApi?
 
 FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses without a server.
@@ -103,6 +105,8 @@ In summary, I advise you as in the example below :
 - and create one json response file per request (getUserById.json, postUser1.json etc...)
 
 ![Config example](https://github.com/redisdev/FakeApi/blob/release_v1.2.0/config.png?raw=true)
+
+/!\ Be careful, directories containing api configuration files (such as usersApi.cfg) must not contain any other files! Otherwise FakeApi will try to deserialize them and an exception will be thrown.
 
 - #### How to return data from file?
 
