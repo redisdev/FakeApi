@@ -1,5 +1,7 @@
 [![Build Status](https://dev.azure.com/redisdev/FakeApi/_apis/build/status/redisdev.FakeApi?branchName=master)](https://dev.azure.com/redisdev/FakeApi/_build/latest?definitionId=1&branchName=master)
 
+[![NuGet](https://img.shields.io/nuget/v/FakeApi.svg)](https://www.nuget.org/packages/FakeApi/)
+
 # What is FakeApi?
 
 FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses without a server.
@@ -19,7 +21,8 @@ FakeApi is for you!
 # v1.2.0 Release note
 
 - Improvement of configuration files reading
-- Adding the capability to split the api configurations files into several files
+- Adding the capability to split the api configurations files into multilpe files. Please read 'Organize your configurations files' section
+- Adding a default implementation of IHttpRequester
 
 # How to use FakeApi?
 
@@ -80,6 +83,30 @@ Now, you can define your web api configuration:
 For each web api you can set several actives responses. One per pair url/method. At runtime you can switch between responses with changing active property value.
 Note that you can use template segment in your url configuration (/{idUser}).
 You can also override all default values defined at the root path in each apis configuration.
+
+- #### Organize your configurations files
+
+You can configure FakeApi in a single file. But you can now split your Apis configurations files into multiple files. To do that, just provide all directories where FakeApi can find api configurations files by this way :
+
+```json
+{
+  "defaultDelay": 250,
+  "defaultHttpCode": 200,
+  "defaultMethod": "GET",
+  "apisDirectories": [
+      "Config/Api/User"
+  ]
+}
+```
+
+In summary, I advise you as in the example below :
+- declare a main file (api.cfg.json) with all default values that you need and all api configurations files directories
+- create one configuration file per api type (usersApi.cfg.json, ordersApi.cfg.json etc...)
+- and create one json response file per request (getUserById.json, postUser1.json etc...)
+
+![Config example](https://github.com/redisdev/FakeApi/blob/release_v1.2.0/config.png?raw=true)
+
+/!\ Be careful, directories containing api configuration files (such as usersApi.cfg) must not contain any other files! Otherwise FakeApi will try to deserialize them and an exception will be thrown.
 
 - #### How to return data from file?
 
@@ -216,8 +243,7 @@ using (var stream = new StreamReader(getUserResponse.GetResponseStream()))
 ````
 - #### IHttpRequester
 
-In production, replace the FakeHttpRequester implemention of FakeApi by your own implementation.
-FakeHttpRequester implements IHttpRequester to provide method to send HttpWebRequest synchronous or asynchronous.
+In production, replace the FakeHttpRequester implementation by DefaultHttpRequester provided by FakeApi. Or you can also write your own implementation of IHttpRequester interface.
 
 ```csharp
 
@@ -236,6 +262,31 @@ public interface IHttpRequester
     /// </summary>
     Task<HttpWebResponse> GetResponseAsync(HttpWebRequest request);
 }
+
+public class DefaultHttpRequester: IHttpRequester
+    {
+        public HttpWebResponse GetResponse(WebRequest request)
+        {
+            if(request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
+            var response = request.GetResponse();
+            return response as HttpWebResponse;
+        }
+
+        public async Task<HttpWebResponse> GetResponseAsync(WebRequest request)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
+            var response = await request.GetResponseAsync();
+            return response as HttpWebResponse;
+        }
+    }
 
 ```
 
@@ -289,7 +340,7 @@ public interface IHttpRequester
 - string name
 - string value
 
-#### Json configuration full example
+#### Single file Json configuration full example
 
 ```json
 
