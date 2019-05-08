@@ -6,11 +6,6 @@
         {
           "active": 1,
           "file": "Config/Api/User/Response/getUserById.json"
-        },
-        {
-          "active": 1,
-          "method": "PUT",
-          "file": "Config/Api/User/Response/putUser.json"
         }
       ]
     },
