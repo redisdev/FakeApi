@@ -115,6 +115,19 @@ namespace FakeApi
                     streamReader.BaseStream.CopyTo(responseStream);
                 }
             }
+            else if(apiResponse.HasFiles)
+            {
+                var file = apiResponse.GetNextFile();
+                if (!File.Exists(file))
+                {
+                    throw new FileLoadException($"File {file} not exists");
+                }
+
+                using (var streamReader = new StreamReader(file))
+                {
+                    streamReader.BaseStream.CopyTo(responseStream);
+                }
+            }
             else
             {
                 var expectedBytes = Encoding.UTF8.GetBytes(apiResponse.Response ?? config.DefaultResponse);

@@ -58,12 +58,12 @@
       "url": "https://localhost/api/users?pIndex={0}&pSize={1}",
       "responses": [
         {
-          "active": 0,
-          "file": "Config/Api/User/Response/searchUsersPage0.json"
-        },
-        {
           "active": 1,
-          "file": "Config/Api/User/Response/searchUsersPage1.json"
+          "delay": 500,
+          "files": [
+            "Config/Api/User/Response/searchUsersPage0.json",
+            "Config/Api/User/Response/searchUsersPage1.json"
+          ]
         }
       ]
     }

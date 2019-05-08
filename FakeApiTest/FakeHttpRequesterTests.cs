@@ -10,6 +10,18 @@ namespace FakeApiTest
     [TestClass]
     public class FakeHttpRequesterTests
     {
+        [TestInitialize]
+        public void SetUp()
+        {
+            ConfigIO._config = null;
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            ConfigIO._config = null;
+        }
+
         [TestMethod]
         [DataRow(true)]
         [DataRow(false)]
@@ -346,6 +358,26 @@ namespace FakeApiTest
 
             //Assert
             Assert.AreEqual("File FakeFile not exists", ex.Message);
+        }
+
+        [TestMethod]
+        public void CreateResponseStream_ShouldCallGetNextFile()
+        {
+            //Arrange
+            var fakeRequester = new FakeHttpRequester("Files/Config/Api/api.cfg.json");
+            var request = WebRequest.Create("https://localhost/api/users?pIndex=0&pSize=2");
+
+            //Act
+            var response1 = fakeRequester.GetResponse(request);
+            var response2 = fakeRequester.GetResponse(request);
+
+            //Assert
+            using (var stream1 = new StreamReader(response1.GetResponseStream()))
+            using (var stream2 = new StreamReader(response2.GetResponseStream()))
+            {
+                Assert.AreEqual(File.ReadAllText("Files/Config/Api/usersApi.cfg.json"), stream1.ReadToEnd());
+                Assert.AreEqual(File.ReadAllText("Files/Config/Api/ordersApi.cfg.json"), stream2.ReadToEnd());
+            }
         }
     }
 }

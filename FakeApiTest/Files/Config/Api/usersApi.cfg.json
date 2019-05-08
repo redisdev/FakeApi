@@ -34,11 +34,10 @@
       "responses": [
         {
           "active": 1,
-          "file": "Config/Api/User/Response/searchUsersPage0.json"
-        },
-        {
-          "active": 0,
-          "file": "Config/Api/User/Response/searchUsersPage1.json"
+          "files": [
+            "Files/Config/Api/usersApi.cfg.json",
+            "Files/Config/Api/ordersApi.cfg.json"
+          ]
         }
       ]
     }

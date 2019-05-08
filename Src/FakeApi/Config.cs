@@ -106,7 +106,8 @@ namespace FakeApi
             }
 
             if(string.IsNullOrEmpty(DefaultResponse)
-                && (!responses.Any() || responses.Any(r => !r.HasFile && !r.HasWebException && !r.HasCustomException && string.IsNullOrEmpty(r.Response))))
+                && (!responses.Any() 
+                    || responses.Any(r => !r.HasFile && !r.HasFiles && !r.HasWebException && !r.HasCustomException && string.IsNullOrEmpty(r.Response))))
             {
                 throw new Exception("At least one api has no response configured");
             }
