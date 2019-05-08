@@ -21,6 +21,24 @@
     <None Update="Config\Api\User\Response\getUserById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Config\Api\Order\Response\getOrderById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Api\Order\Response\putOrder.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Api\User\Response\postUser1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Api\User\Response\postUser2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Api\User\Response\searchUsersPage0.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Api\User\Response\searchUsersPage1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Src\FakeApi\FakeApi.csproj" />
@@ -29,9 +47,7 @@
     <Folder Include="Config\" />
     <Folder Include="Config\Api\" />
     <Folder Include="Config\Api\User\" />
-    <Folder Include="Config\Api\Order\" />
     <Folder Include="Config\Api\User\Response\" />
-    <Folder Include="Config\Api\Order\Response\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Program.cs">

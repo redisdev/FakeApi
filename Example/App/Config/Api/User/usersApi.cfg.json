@@ -20,7 +20,37 @@
         {
           "active": 1,
           "method": "POST",
-          "file": "Config/Api/User/Response/postUser1.json"
+          "file": "Config/Api/User/Response/postUser1.json",
+          "cookies": [
+            {
+              "name": "overrideDefaultookie1",
+              "value": "override default valCookie1",
+              "comment": "override default Comment1",
+              "discard": 0,
+              "domain": "override default domain1",
+              "expired": 1,
+              "expires": "2012-10-12",
+              "httpOnly": 1,
+              "path": "path1",
+              "port": "\"8080\", \"8090\"",
+              "secure": 1,
+              "version": 54
+            },
+            {
+              "name": "cookie2",
+              "value": "valCookie2"
+            }
+          ],
+          "headers": [
+            {
+              "name": "overrideDefaultHeader1",
+              "value": "override default valHeader1"
+            },
+            {
+              "name": "overrideDefaultHeader2",
+              "value": "override default valHeader2  "
+            }
+          ]
         },
         {
           "active": 0,
@@ -33,11 +63,11 @@
       "url": "https://localhost/api/users?pIndex={0}&pSize={1}",
       "responses": [
         {
-          "active": 1,
+          "active": 0,
           "file": "Config/Api/User/Response/searchUsersPage0.json"
         },
         {
-          "active": 0,
+          "active": 1,
           "file": "Config/Api/User/Response/searchUsersPage1.json"
         }
       ]
