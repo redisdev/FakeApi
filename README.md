@@ -14,12 +14,12 @@ FakeApi is for you!
 
 # Oldest versions documentation
 
-[v1.0.x](https://github.com/redisdev/FakeApi/tree/v1.0.3)
+[v1.1.x](https://github.com/redisdev/FakeApi/tree/v1.1.1)
 
-# v1.1.x Release note
+# v1.2.0 Release note
 
-- Adding the capability to set several actives responses. One per pair url/httpMethod. Please see web api configuration section
-- Improve configuration errors messages understanding
+- Improvement of configuration files reading
+- Adding the capability to split the api configurations files into several files
 
 # How to use FakeApi?
 
