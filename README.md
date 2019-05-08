@@ -2,6 +2,8 @@
 
 [![NuGet](https://img.shields.io/nuget/v/FakeApi.svg)](https://www.nuget.org/packages/FakeApi/)
 
+[![codecov](https://img.shields.io/azure-devops/coverage/redisdev/FakeApi/1.svg)](https://dev.azure.com/redisdev/FakeApi/_build/results?buildId=53&view=codecoverage-tab)
+
 # What is FakeApi?
 
 FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses without a server.
