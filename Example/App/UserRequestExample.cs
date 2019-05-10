@@ -17,6 +17,7 @@ namespace App
             SearchUser(httpRequester);
             SearchUser(httpRequester);
             SearchUser(httpRequester);
+            SearchUser(httpRequester);
         }
 
         private static void SearchUser(IHttpRequester httpRequester)

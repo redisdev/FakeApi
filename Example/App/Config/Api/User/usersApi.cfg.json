@@ -62,7 +62,8 @@
           "delay": 500,
           "files": [
             "Config/Api/User/Response/searchUsersPage0.json",
-            "Config/Api/User/Response/searchUsersPage1.json"
+            "Config/Api/User/Response/searchUsersPage1.json",
+            "Config/Api/User/Response/searchUsersPage2.json"
           ]
         }
       ]
