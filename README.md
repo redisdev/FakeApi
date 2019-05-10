@@ -1,3 +1,5 @@
+![GitHub Logo](https://repository-images.githubusercontent.com/183810162/ee540000-72aa-11e9-944d-647b80365c34)
+
 [![Build Status](https://dev.azure.com/redisdev/FakeApi/_apis/build/status/redisdev.FakeApi?branchName=master)](https://dev.azure.com/redisdev/FakeApi/_build/latest?definitionId=1&branchName=master)
 
 [![NuGet](https://img.shields.io/nuget/v/FakeApi.svg)](https://www.nuget.org/packages/FakeApi/)
