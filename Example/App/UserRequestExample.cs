@@ -12,6 +12,11 @@ namespace App
         {
             PostUser(httpRequester);
             GetUserById(httpRequester);
+            //Multiple results files
+            SearchUser(httpRequester);
+            SearchUser(httpRequester);
+            SearchUser(httpRequester);
+            SearchUser(httpRequester);
             SearchUser(httpRequester);
         }
 

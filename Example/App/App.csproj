@@ -39,6 +39,9 @@
     <None Update="Config\Api\User\Response\searchUsersPage1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Config\Api\User\Response\searchUsersPage2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Src\FakeApi\FakeApi.csproj" />

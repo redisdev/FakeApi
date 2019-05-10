@@ -8,12 +8,19 @@ namespace FakeApi
 {
     internal static class ConfigIO
     {
+        internal static Config _config;
+
         public static Config GetConfig(string configSource)
         {
-            var config = LoadConfig(configSource);
-            MergeApis(config, configSource);
-            config.Validate();
-            return config;
+            if(_config != null)
+            {
+                return _config;
+            }
+
+            _config = LoadConfig(configSource);
+            MergeApis(_config, configSource);
+            _config.Validate();
+            return _config;
         }
 
         public static Config LoadConfig(string configSource)
