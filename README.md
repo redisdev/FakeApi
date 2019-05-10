@@ -18,15 +18,15 @@ FakeApi provides the ability to send HttpWebRequest and get HttpWebResponses wit
 
 FakeApi is for you!
 
-# Oldest versions documentation
+# Oldest versions documentations
 
-[v1.1.x](https://github.com/redisdev/FakeApi/tree/v1.1.1)
+- [v1.0.x](https://github.com/redisdev/FakeApi/tree/v1.0.3)
+- [v1.1.x](https://github.com/redisdev/FakeApi/tree/v1.1.1)
+- [v1.2.x](https://github.com/redisdev/FakeApi/tree/v1.2.0)
 
-# v1.2.0 Release note
+# v1.3.0 Release note
 
-- Improvement of configuration files reading
-- Adding the capability to split the api configurations files into multilpe files. Please read 'Organize your configurations files' section
-- Adding a default implementation of IHttpRequester
+- You can now define several result files for each API. Please read 'How to return data from file?' section.
 
 # How to use FakeApi?
 
@@ -129,6 +129,26 @@ Simply set the "file" property into your api configuration:
       ]
     }
 ```
+
+If you want to return different data each time you call one of your APIs, then you can define several result files :
+
+```json
+{
+  "url": "https://localhost/api/users?pIndex={0}&pSize={1}",
+  "responses": [
+    {
+      "active": 1,
+      "files": [
+        "Config/Api/User/Response/searchUsersPage0.json",
+        "Config/Api/User/Response/searchUsersPage1.json",
+        "Config/Api/User/Response/searchUsersPage2.json"
+      ]
+    }
+  ]
+}
+
+```
+At the first call the data of the first file will be returned then the second to the second call etc ... This type of configuration can be useful for paged requests.
 
 - #### How to add cookie and header?
 
