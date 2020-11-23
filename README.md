@@ -4,7 +4,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/FakeApi.svg)](https://www.nuget.org/packages/FakeApi/)
 
-[![codecov](https://img.shields.io/azure-devops/coverage/redisdev/FakeApi/1.svg)](https://dev.azure.com/redisdev/FakeApi/_build/results?buildId=89&view=codecoverage-tab)
+[![codecov](https://img.shields.io/azure-devops/coverage/redisdev/FakeApi/1.svg)](https://dev.azure.com/redisdev/FakeApi/_build/results?buildId=89&view=ms.vss-test-web.build-test-results-tab)
 
 # What is FakeApi?
 
