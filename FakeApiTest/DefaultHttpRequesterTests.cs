@@ -52,7 +52,7 @@ namespace FakeApiTest
         {
             //Arrange
             var defaultHttpRequester = new DefaultHttpRequester();
-            var webRequest = WebRequest.Create("http://dummy.restapiexample.com/api/v1/employee/38763");
+            var webRequest = WebRequest.Create("https://www.google.fr");
 
             //Act
             var response = defaultHttpRequester.GetResponse(webRequest);
@@ -66,7 +66,7 @@ namespace FakeApiTest
         {
             //Arrange
             var defaultHttpRequester = new DefaultHttpRequester();
-            var webRequest = WebRequest.Create("http://dummy.restapiexample.com/api/v1/employee/38763");
+            var webRequest = WebRequest.Create("https://www.google.fr");
 
             //Act
             var response = defaultHttpRequester.GetResponseAsync(webRequest);
